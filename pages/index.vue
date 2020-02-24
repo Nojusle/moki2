@@ -6,7 +6,7 @@
         moki
       </h1>
       <Clock />
-      <div>v3</div>
+      <div>v4</div>
       <nuxt-link to="nojus">nojus</nuxt-link>
     </div>
   </div>
@@ -35,7 +35,7 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: red;
+  background: rgb(232, 243, 255);
 }
 
 .main {
