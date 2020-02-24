@@ -1,0 +1,33 @@
+---
+  kind: Service
+  apiVersion: v1
+  metadata:
+    name: moki2-nuxt
+  spec:
+    type: LoadBalancer
+    selector:
+      app: moki2-nuxt
+    ports:
+      - port: 80
+        targetPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moki2-nuxt
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: moki2-nuxt
+  template:
+    metadata:
+      labels:
+        app: moki2-nuxt
+    spec:
+      containers:
+      - name: moki2
+        image: nojus/moki2
+        ports:
+          - containerPort: 3000
+        # imagePullPolicy: Always
