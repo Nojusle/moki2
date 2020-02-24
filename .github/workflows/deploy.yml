@@ -26,8 +26,8 @@ jobs:
     - name: Push image to Docker Hub
       run: docker push nojus/moki2
 
-    - name: Update deployment file
-      run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|andrewsomething/static-example:'${TAG}'|' $GITHUB_WORKSPACE/config/deployment.yml
+    # - name: Update deployment file
+    #   run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|nojus/moki2:'${TAG}'|' $GITHUB_WORKSPACE/config/deployment.yml
 
     # - name: Save DigitalOcean kubeconfig
     #   uses: digitalocean/action-doctl@master
