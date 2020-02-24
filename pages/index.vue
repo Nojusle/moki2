@@ -6,7 +6,7 @@
         moki
       </h1>
       <Clock />
-      <div>v4</div>
+      <div>v5</div>
       <nuxt-link to="nojus">nojus</nuxt-link>
     </div>
   </div>

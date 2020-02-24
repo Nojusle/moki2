@@ -27,7 +27,7 @@ jobs:
       run: docker push nojus/moki2
 
     - name: Update deployment file
-      run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|nojus/moki2:'${TAG}'|' $GITHUB_WORKSPACE/config/deployment2.yml
+      run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|nojus/moki2:'${TAG}'|' $GITHUB_WORKSPACE/config/moki2-nuxt.yml
 
     - name: Save DigitalOcean kubeconfig
       uses: digitalocean/action-doctl@master
@@ -37,7 +37,7 @@ jobs:
         args: kubernetes cluster kubeconfig show mmm > $GITHUB_WORKSPACE/.kubeconfig
 
     - name: Deploy to DigitalOcean Kubernetes
-      run: kubectl --kubeconfig=$GITHUB_WORKSPACE/.kubeconfig apply -f $GITHUB_WORKSPACE/config/deployment2.yml
+      run: kubectl --kubeconfig=$GITHUB_WORKSPACE/.kubeconfig apply -f $GITHUB_WORKSPACE/config/moki2-nuxt.yml
 
     - name: Verify deployment
       run: kubectl --kubeconfig=$GITHUB_WORKSPACE/.kubeconfig rollout status deployment/moki2-nuxt
