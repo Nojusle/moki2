@@ -15,7 +15,7 @@ jobs:
       run: echo $GITHUB_SHA > $GITHUB_WORKSPACE/site/_meta
 
     - name: Build container image
-      run: docker build -t nojus/moki2:$(echo $GITHUB_SHA | head -c7) .
+      run: docker build -t nojus/moki2:$(echo $GITHUB_SHA | head -c7) ./moki2-nuxt
 
     - name: Docker Login
       env:

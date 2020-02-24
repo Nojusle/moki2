@@ -15,7 +15,6 @@ spec:
       containers:
       - name: moki2
         image: <IMAGE>
-          # nojus/moki2
         ports:
           - containerPort: 3000
         imagePullPolicy: Always

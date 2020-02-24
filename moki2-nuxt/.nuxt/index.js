@@ -11,8 +11,8 @@ import { setContext, getLocation, getRouteData, normalizeError } from './utils'
 
 /* Plugins */
 
-import nuxt_plugin_workbox_56f0dfa9 from 'nuxt_plugin_workbox_56f0dfa9' // Source: ./workbox.js (mode: 'client')
-import nuxt_plugin_nuxticons_3f0a979b from 'nuxt_plugin_nuxticons_3f0a979b' // Source: ./nuxt-icons.js (mode: 'all')
+import nuxt_plugin_workbox_d49aec84 from 'nuxt_plugin_workbox_d49aec84' // Source: ./workbox.js (mode: 'client')
+import nuxt_plugin_nuxticons_49fa3966 from 'nuxt_plugin_nuxticons_49fa3966' // Source: ./nuxt-icons.js (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -146,12 +146,12 @@ async function createApp (ssrContext) {
 
   // Plugin execution
 
-  if (process.client && typeof nuxt_plugin_workbox_56f0dfa9 === 'function') {
-    await nuxt_plugin_workbox_56f0dfa9(app.context, inject)
+  if (process.client && typeof nuxt_plugin_workbox_d49aec84 === 'function') {
+    await nuxt_plugin_workbox_d49aec84(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_nuxticons_3f0a979b === 'function') {
-    await nuxt_plugin_nuxticons_3f0a979b(app.context, inject)
+  if (typeof nuxt_plugin_nuxticons_49fa3966 === 'function') {
+    await nuxt_plugin_nuxticons_49fa3966(app.context, inject)
   }
 
   // If server-side, wait for async component to be resolved first

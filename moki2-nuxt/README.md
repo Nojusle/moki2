@@ -1,5 +1,8 @@
 # moki
 
+![deploy](https://github.com/Nojusle/moki2/workflows/deploy/badge.svg)
+
+
 > My stellar Nuxt.js project
 
 ## Build Setup
@@ -22,3 +25,10 @@ $ npm run generate
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
 # moki
 # moki2
+
+
+to do
+- fix folder structure
+- add domain
+- add tsl
+- connect with other resources
