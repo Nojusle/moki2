@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div>
+    <div class="main">
       <logo />
       <h1 class="title">
         moki
@@ -33,6 +33,14 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
+  background: red;
+}
+
+.main {
+  background: #fff;
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.6);
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .title {

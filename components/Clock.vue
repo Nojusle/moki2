@@ -34,6 +34,8 @@ export default {
 <style>
 .time {
   border: 2px solid;
-  border-radius: 50%;
+  border-radius: 50px;
+  background: #000;
+  color: #fff;
 }
 </style>
