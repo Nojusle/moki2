@@ -20,9 +20,9 @@ spec:
           imagePullPolicy: Always
           env:
             - name: GRAPHQL_SERVER_URL
-            value: "gql.nojus.me"
+              value: "gql.nojus.me"
             - name: GRAPHQL_SERVICE_NAME
-            value: "moki2-apollo"
+              value: "moki2-apollo"
 ---
 kind: Service
 apiVersion: v1

@@ -20,10 +20,9 @@ spec:
           imagePullPolicy: Always
           env:
             - name: MONGO_SERVICE_NAME
-            value: "some mongo url"
+              value: "some mongo url"
             - name: ELASTICSEARCH_SERVICE_NAME
-            value: "some elastic url"
-
+              value: "some elastic url"
 ---
 kind: Service
 apiVersion: v1
