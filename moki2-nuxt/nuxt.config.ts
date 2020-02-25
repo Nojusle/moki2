@@ -1,7 +1,15 @@
 import { Configuration } from '@nuxt/types'
 
+const graphqlUrl = process.env.GRAPHQL_URL || 'http://localhost:4000'
+const graphqlLocalUrl = process.env.GRAPHQL_LOCAL_URL || 'http://localhost:4000'
+
 const config: Configuration = {
   mode: 'universal',
+  env: {
+    graphqlUrl,
+    graphqlLocalUrl
+  },
+
   /*
    ** Headers of the page
    */
@@ -56,7 +64,7 @@ const config: Configuration = {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: 'https://gql.nojus.me' // 'http://localhost:4000/'
+        httpEndpoint: graphqlUrl // 'http://localhost:4000/'
       }
     }
   },

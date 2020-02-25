@@ -19,9 +19,9 @@ spec:
             - containerPort: 3000
           imagePullPolicy: Always
           env:
-            - name: GRAPHQL_SERVER_URL
+            - name: GRAPHQL_URL
               value: "gql.nojus.me"
-            - name: GRAPHQL_SERVICE_NAME
+            - name: GRAPHQL_LOCAL_URL
               value: "moki2-apollo"
 ---
 kind: Service
