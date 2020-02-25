@@ -7,20 +7,27 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   tls:
-  - hosts:
-    - nojus.me
-    - admin.nojus.me
-    secretName: kubernetes-tls
+    - hosts:
+        - nojus.me
+        - admin.nojus.me
+        - gql.nojus.me
+      secretName: kubernetes-tls
   rules:
-  - host: nojus.me
-    http:
-      paths:
-      - backend:
-          serviceName: moki2-nuxt
-          servicePort: 80
-  - host: admin.nojus.me
-    http:
-      paths:
-      - backend:
-          serviceName: admin-vue
-          servicePort: 80
+    - host: nojus.me
+      http:
+        paths:
+          - backend:
+              serviceName: moki2-nuxt
+              servicePort: 80
+    - host: admin.nojus.me
+      http:
+        paths:
+          - backend:
+              serviceName: admin-vue
+              servicePort: 80
+    - host: gql.nojus.me
+      http:
+        paths:
+          - backend:
+              serviceName: moki2-apollo
+              servicePort: 80

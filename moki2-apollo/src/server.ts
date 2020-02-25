@@ -14,7 +14,6 @@ const server = new ApolloServer({
 });
 
 app.use("*", cors());
-
 app.use(compression());
 
 server.applyMiddleware({ app, path: "/" });

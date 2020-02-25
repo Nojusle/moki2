@@ -13,20 +13,20 @@ spec:
         app: moki2-nuxt
     spec:
       containers:
-      - name: moki2
-        image: <IMAGE>
-        ports:
-          - containerPort: 3000
-        imagePullPolicy: Always
+        - name: moki2
+          image: <IMAGE>
+          ports:
+            - containerPort: 3000
+          imagePullPolicy: Always
 ---
-  kind: Service
-  apiVersion: v1
-  metadata:
-    name: moki2-nuxt
-  spec:
-    type: ClusterIP
-    selector:
-      app: moki2-nuxt
-    ports:
-      - port: 80
-        targetPort: 3000
+kind: Service
+apiVersion: v1
+metadata:
+  name: moki2-nuxt
+spec:
+  type: ClusterIP
+  selector:
+    app: moki2-nuxt
+  ports:
+    - port: 80
+      targetPort: 3000

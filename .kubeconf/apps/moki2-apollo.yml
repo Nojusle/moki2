@@ -1,32 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: admin-vue
+  name: moki2-apollo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: admin-vue
+      app: moki2-apollo
   template:
     metadata:
       labels:
-        app: admin-vue
+        app: moki2-apollo
     spec:
       containers:
-        - name: admin-vue
+        - name: moki2-apollo
           image: <IMAGE>
           ports:
-            - containerPort: 80
+            - containerPort: 4000
           imagePullPolicy: Always
 ---
 kind: Service
 apiVersion: v1
 metadata:
-  name: admin-vue
+  name: moki2-apollo
 spec:
   type: ClusterIP
   selector:
-    app: admin-vue
+    app: moki2-apollo
   ports:
     - port: 80
-      targetPort: 80
+      targetPort: 4000
