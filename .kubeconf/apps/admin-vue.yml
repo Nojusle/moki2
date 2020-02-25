@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-vue
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: admin-vue
+  template:
+    metadata:
+      labels:
+        app: admin-vue
+    spec:
+      containers:
+      - name: admin-vue
+        image: <IMAGE>
+        ports:
+          - containerPort: 80
+        imagePullPolicy: Always
+---
+  kind: Service
+  apiVersion: v1
+  metadata:
+    name: admin-vue
+  spec:
+    type: ClusterIP
+    selector:
+      app: admin-vue
+    ports:
+      - port: 80
+        targetPort: 80

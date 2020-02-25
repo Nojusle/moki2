@@ -9,11 +9,18 @@ spec:
   tls:
   - hosts:
     - nojus.me
+    - admin.nojus.me
     secretName: kubernetes-tls
   rules:
-  - host: nojus.me
+    - host: nojus.me
     http:
       paths:
       - backend:
           serviceName: moki2-nuxt
+          servicePort: 80
+  - host: admin.nojus.me
+    http:
+      paths:
+      - backend:
+          serviceName: admin-vue
           servicePort: 80
