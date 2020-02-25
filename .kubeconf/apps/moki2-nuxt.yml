@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: moki2-nuxt
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: moki2-nuxt
@@ -24,7 +24,7 @@ spec:
   metadata:
     name: moki2-nuxt
   spec:
-    type: LoadBalancer
+    type: ClusterIP
     selector:
       app: moki2-nuxt
     ports:
