@@ -1,4 +1,4 @@
-name: deploy admin
+name: ingress update
 
 on:
   push:

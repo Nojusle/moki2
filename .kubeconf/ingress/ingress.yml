@@ -12,7 +12,7 @@ spec:
     - admin.nojus.me
     secretName: kubernetes-tls
   rules:
-    - host: nojus.me
+  - host: nojus.me
     http:
       paths:
       - backend:
