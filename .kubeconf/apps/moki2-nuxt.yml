@@ -13,11 +13,16 @@ spec:
         app: moki2-nuxt
     spec:
       containers:
-        - name: moki2
+        - name: moki2-nuxt
           image: <IMAGE>
           ports:
             - containerPort: 3000
           imagePullPolicy: Always
+          env:
+            - name: GRAPHQL_SERVER_URL
+            value: "gql.nojus.me"
+            - name: GRAPHQL_SERVICE_NAME
+            value: "moki2-apollo"
 ---
 kind: Service
 apiVersion: v1

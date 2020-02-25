@@ -56,7 +56,7 @@ const config: Configuration = {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: 'http://localhost:4000/'
+        httpEndpoint: 'https://gql.nojus.me' // 'http://localhost:4000/'
       }
     }
   },
