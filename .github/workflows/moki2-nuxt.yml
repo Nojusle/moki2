@@ -1,6 +1,9 @@
-name: deploy
+name: deploy moki2-nuxt
 
-on: [push]
+on:
+  push:
+    paths:
+    - 'moki2-nuxt/**'
 
 jobs:
   build:
