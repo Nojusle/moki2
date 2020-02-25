@@ -1,7 +1,7 @@
 FROM node:12-alpine
 
-# ENV GRAPHQL_URL https://gql.nojus.me
-# ENV GRAPHQL_LOCAL_URL https://gql.nojus.me
+ENV GRAPHQL_URL https://gql.nojusel.me
+ENV GRAPHQL_LOCAL_URL https://gql.nojusel.me
 
 
 # create destination directory
@@ -19,7 +19,7 @@ RUN npm install
 # build necessary, even if no static files are needed,
 # since it builds the server as well
 #
-RUN env GRAPHQL_URL=${GRAPHQL_URL} GRAPHQL_LOCAL_URL=${GRAPHQL_LOCAL_URL} npm run build
+RUN npm run build
 
 # expose 5000 on container
 EXPOSE 3000
