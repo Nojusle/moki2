@@ -1,5 +1,9 @@
 FROM node:12-alpine
 
+ENV GRAPHQL_URL http://localhost:4000
+ENV GRAPHQL_LOCAL_URL http://localhost:4000
+
+
 # create destination directory
 RUN mkdir -p /usr/src/nuxt-app
 WORKDIR /usr/src/nuxt-app
@@ -14,7 +18,7 @@ RUN npm install
 
 # build necessary, even if no static files are needed,
 # since it builds the server as well
-RUN env GRAPHQL_URL=https://gql.nojus.me/ GRAPHQL_LOCAL_URL=https://gql.nojus.me/ npm run build
+RUN env GRAPHQL_URL=${GRAPHQL_URL} GRAPHQL_LOCAL_URL=${GRAPHQL_LOCAL_URL} npm run build
 
 # expose 5000 on container
 EXPOSE 3000
