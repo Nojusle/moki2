@@ -18,7 +18,8 @@ RUN npm install
 
 # build necessary, even if no static files are needed,
 # since it builds the server as well
-RUN env GRAPHQL_URL=${GRAPHQL_URL} GRAPHQL_LOCAL_URL=${GRAPHQL_LOCAL_URL} npm run build
+# env GRAPHQL_URL=${GRAPHQL_URL} GRAPHQL_LOCAL_URL=${GRAPHQL_LOCAL_URL}
+RUN npm run build
 
 # expose 5000 on container
 EXPOSE 3000
