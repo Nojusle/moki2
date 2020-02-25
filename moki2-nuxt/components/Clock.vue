@@ -1,11 +1,14 @@
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
   data() {
     return {
       time: '',
       interval: -1
     }
   },
+
   mounted() {
     this.time = this.getCurrentTime()
 
@@ -13,9 +16,11 @@ export default {
       this.time = this.getCurrentTime()
     }, 100)
   },
-  beforeDestroy() {
+
+  beforeDestroy(): void {
     window.clearInterval(this.interval)
   },
+
   methods: {
     getCurrentTime() {
       const time = new Date()
@@ -24,11 +29,13 @@ export default {
       return `${time.getHours()}:${time.getMinutes()}:${fix}`
     }
   }
-}
+})
 </script>
 
 <template>
-  <div class="time">{{ time }}</div>
+  <div class="time">
+    {{ time }}
+  </div>
 </template>
 
 <style>

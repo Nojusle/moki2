@@ -1,0 +1,92 @@
+{
+  //   // ===
+  //   // Spacing
+  //   // ===
+
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.trimAutoWhitespace": true,
+  "files.trimTrailingWhitespace": true,
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+
+  // ===
+  // Files
+  // ===
+
+  "files.exclude": {
+    "**/*.log": true,
+    "**/*.log*": true,
+    "**/dist": true,
+    "**/coverage": true
+  },
+  "files.associations": {
+    ".markdownlintrc": "jsonc"
+  },
+
+  //   // ===
+  //   // Event Triggers
+  //   // ===
+
+  "editor.formatOnSave": true,
+  "eslint.run": "onType",
+
+  "vetur.format.enable": false,
+  "prettier.disableLanguages": [],
+
+  // "vetur.format.defaultFormatter.js": "vscode-typescript",
+  // "vetur.format.defaultFormatter.html": "js-beautify-html",
+  // "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+
+  //   // ===
+  //   // HTML
+  //   // ===
+
+  //   "html.format.enable": false,
+  //   "vetur.validation.template": false,
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.includeLanguages": {
+    "vue-html": "html"
+  },
+  //   "vetur.completion.tagCasing": "initial",
+
+  //   // ===
+  //   // JS(ON)
+  //   // ===
+
+  //   "jest.autoEnable": false,
+  //   "jest.enableCodeLens": false,
+  "javascript.format.enable": false,
+  "json.format.enable": false,
+  //   "vetur.validation.script": false,
+
+  //   // ===
+  //   // CSS
+  //   // ===
+
+  "stylelint.enable": true,
+  "css.validate": false,
+  "scss.validate": false,
+  "vetur.validation.style": false,
+
+  // ===
+  // MARKDOWN
+  // ===
+
+  "[markdown]": {
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 80
+  },
+  "eslint.validate": [
+    "vue",
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "vue-html",
+    "html"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}

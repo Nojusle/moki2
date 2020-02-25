@@ -1,26 +1,46 @@
+<script lang="ts">
+import Vue from 'vue'
+import gql from 'graphql-tag'
+import Clock from '../components/Clock.vue'
+
+export default Vue.extend({
+  components: {
+    Clock
+  },
+  data() {
+    return {
+      helloWorld: undefined
+    }
+  },
+
+  apollo: {
+    helloWorld: {
+      prefetch: false,
+      query: gql`
+        query homePage {
+          helloWorld
+        }
+      `
+    }
+  }
+})
+</script>
+
 <template>
   <div class="container">
     <div class="main">
-      <logo />
       <h1 class="title">
         moki
       </h1>
       <Clock />
       <div>v9</div>
-      <nuxt-link to="nojus">nojus</nuxt-link>
+      <nuxt-link to="nojus">
+        nojus
+      </nuxt-link>
+      <div>{{ helloWorld || 'server not working' }}</div>
     </div>
   </div>
 </template>
-
-<script>
-import Clock from '~/components/Clock.vue'
-
-export default {
-  components: {
-    Clock
-  }
-}
-</script>
 
 <style>
 /* Sample `apply` at-rules with Tailwind CSS
