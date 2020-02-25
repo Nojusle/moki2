@@ -3,7 +3,7 @@ name: ingress update
 on:
   push:
     paths:
-    - '.kubeconf/ingress/ingress.yaml'
+    - '.kubeconf/ingress/ingress.yml'
 
 jobs:
   build:
