@@ -1,15 +1,15 @@
 FROM node:12-alpine
 
 # # docker args passed when building the image
-# ARG GRAPHQL_URL
-# ARG GRAPHQL_LOCAL_URL
+ARG GRAPHQL_URL
+ARG GRAPHQL_LOCAL_URL
 
 # # set args to env variables
 # ENV GRAPHQL_URL=$GRAPHQL_URL
 # ENV GRAPHQL_LOCAL_URL=$GRAPHQL_LOCAL_URL
 
-ENV GRAPHQL_URL https://gql.nojus.me
-ENV GRAPHQL_LOCAL_URL https://gql.nojus.me
+ENV GRAPHQL_URL $GRAPHQL_URL
+ENV GRAPHQL_LOCAL_URL $GRAPHQL_LOCAL_URL
 
 # create destination directory
 RUN mkdir -p /usr/src/nuxt-app

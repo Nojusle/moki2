@@ -67,7 +67,7 @@ export default Vue.extend({
         moki
       </h1>
       <Clock />
-      <div>v14</div>
+      <div>v15</div>
       <nuxt-link to="nojus">
         nojus
       </nuxt-link>
