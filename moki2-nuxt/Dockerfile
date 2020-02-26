@@ -4,6 +4,8 @@ ARG GRAPHQL_URL
 #https://gql.nojus.me
 ARG GRAPHQL_LOCAL_URL
 #https://gql.nojus.me
+ENV GRAPHQL_URL=$GRAPHQL_URL
+ENV GRAPHQL_LOCAL_URL=$GRAPHQL_LOCAL_URL
 
 
 # create destination directory
