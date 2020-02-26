@@ -4,19 +4,13 @@ const GRAPHQL_URL = process.env.GRAPHQL_URL || 'http://localhost:4000'
 
 const GRAPHQL_LOCAL_URL = process.env.GRAPHQL_LOCAL_URL || GRAPHQL_URL
 
-const ENV_FROM_DOCKER = process.env.ENV_FROM_DOCKER || 'nope'
-
-console.log('GRAPHQL_URL', GRAPHQL_URL)
-console.log('GRAPHQL_LOCAL_URL', GRAPHQL_LOCAL_URL)
-
 const config: Configuration = {
   mode: 'universal',
 
   env: {
     nojus: 'env',
     GRAPHQL_URL,
-    GRAPHQL_LOCAL_URL,
-    ENV_FROM_DOCKER
+    GRAPHQL_LOCAL_URL
   },
 
   /*

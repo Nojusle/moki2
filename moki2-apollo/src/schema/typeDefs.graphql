@@ -1,3 +1,7 @@
 type Query {
-  helloWorld: String!
+  messages: [String!]
+}
+
+type Mutation {
+  addMessage(msg: String!): [String!]
 }

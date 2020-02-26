@@ -26,8 +26,6 @@ RUN npm install
 # build necessary, even if no static files are needed,
 # since it builds the server as well
 #
-ENV ENV_FROM_DOCKER=isWorking
-
 RUN npm run build
 
 # expose 3000 on container

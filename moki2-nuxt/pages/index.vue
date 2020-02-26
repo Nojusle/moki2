@@ -2,58 +2,79 @@
 import Vue from 'vue'
 import gql from 'graphql-tag'
 import Clock from '../components/Clock.vue'
+import InputMessage from '../components/InputMessage.vue'
 
-const HELLO_WORKD_QUERY = gql`
-  query homePage {
-    helloWorld
+const GET_MESSAGES = gql`
+  query messages {
+    messages
+  }
+`
+const ADD_MESSAGE = gql`
+  mutation addMessage($msg: String!) {
+    addMessage(msg: $msg)
   }
 `
 
 export default Vue.extend({
   components: {
-    Clock
+    Clock,
+    InputMessage
   },
 
   async asyncData(context) {
     try {
       const hello = await context?.app?.apolloProvider?.defaultClient.query({
-        query: HELLO_WORKD_QUERY
+        query: GET_MESSAGES
       })
 
-      return { helloWorld: hello?.data?.helloWorld || 'fetch error' }
+      return { messages: hello?.data?.messages || ['fetch error'] }
     } catch {
-      return { helloWorld: 'network-error' }
+      return { messages: ['network-error'] }
     }
   },
 
   data() {
     return {
-      helloWorld: 'server not working'
+      messages: ['loading']
     }
   },
 
   computed: {
+    messageList(): any {
+      return this.messages
+        .map((msg, index) => ({ msg, index, key: index }))
+        .reverse()
+    },
     endpoint(): any {
       return process.env.GRAPHQL_URL || ''
     },
     env(): any {
       return process.env.nojus || 'none'
-    },
-    docker(): any {
-      return process.env.ENV_FROM_DOCKER
     }
   },
 
   methods: {
+    send(msg: string) {
+      this.$apolloProvider.defaultClient
+        .mutate({
+          mutation: ADD_MESSAGE,
+          variables: {
+            msg
+          }
+        })
+        .then(({ data }) => {
+          this.messages = data.addMessage
+        })
+    },
     async refetch() {
       try {
         const hello = await this.$apolloProvider.defaultClient.query({
-          query: HELLO_WORKD_QUERY
+          query: GET_MESSAGES
         })
         console.log(this.$apolloProvider)
-        this.helloWorld = hello.data
+        this.messages = hello.data?.messages
       } catch {
-        this.helloWorld = 'oops'
+        this.messages = ['error']
       }
     }
   }
@@ -63,19 +84,14 @@ export default Vue.extend({
 <template>
   <div class="container">
     <div class="main">
-      <h1 class="title">
-        moki
-      </h1>
+      <div @click="refetch">v17</div>
+
       <Clock />
-      <div>v17</div>
-      <nuxt-link to="nojus">
-        nojus
-      </nuxt-link>
-      <div>{{ helloWorld }}</div>
-      <div>{{ endpoint || 'none' }}</div>
-      <button @click="refetch">click me</button>
-      <div>{{ env }}</div>
-      <div>{{ docker }}</div>
+      <InputMessage @input="send" />
+
+      <div v-for="i in messageList" :key="i.key">
+        {{ i.index }}. {{ i.msg }}
+      </div>
     </div>
   </div>
 </template>
@@ -100,6 +116,7 @@ export default Vue.extend({
   background: #fff;
   box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.6);
   padding: 10px;
+  margin-top: 100px;
   border-radius: 5px;
 }
 
