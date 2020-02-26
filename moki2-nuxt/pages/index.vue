@@ -28,23 +28,33 @@ export default Vue.extend({
 
   data() {
     return {
-      helloWorld: undefined
+      helloWorld: 'server not working'
     }
   },
 
   computed: {
     endpoint(): any {
       return process.env.GRAPHQL_URL || ''
+    },
+    env(): any {
+      return process.env.nojus || 'none'
+    },
+    docker(): any {
+      return process.env.ENV_FROM_DOCKER
     }
   },
 
   methods: {
     async refetch() {
-      const hello = await this.$apolloProvider.defaultClient.query({
-        query: HELLO_WORKD_QUERY
-      })
-      console.log(this.$apolloProvider)
-      this.helloWorld = hello.data
+      try {
+        const hello = await this.$apolloProvider.defaultClient.query({
+          query: HELLO_WORKD_QUERY
+        })
+        console.log(this.$apolloProvider)
+        this.helloWorld = hello.data
+      } catch {
+        this.helloWorld = 'oops'
+      }
     }
   }
 })
@@ -61,9 +71,11 @@ export default Vue.extend({
       <nuxt-link to="nojus">
         nojus
       </nuxt-link>
-      <div>{{ helloWorld || 'server not working' }}</div>
+      <div>{{ helloWorld }}</div>
       <div>{{ endpoint || 'none' }}</div>
       <button @click="refetch">click me</button>
+      <div>{{ env }}</div>
+      <div>{{ docker }}</div>
     </div>
   </div>
 </template>

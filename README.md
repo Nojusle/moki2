@@ -1,4 +1,6 @@
-# moki
+# example
+
+## Project setup
 
 ![deploy](https://github.com/Nojusle/moki2/workflows/deploy/badge.svg)
 
@@ -13,3 +15,5 @@ to do
 - no newtork queries when ssr
 
 - fix environment variables - pass url and other info throuteh env vars
+
+- pack everyting nicely

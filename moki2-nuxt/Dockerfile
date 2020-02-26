@@ -25,5 +25,7 @@ ENV NUXT_HOST=0.0.0.0
 # set app port
 ENV NUXT_PORT=3000
 
+ENV ENV_FROM_DOCKER=isWorking
+
 # start the app
 CMD [ "npm", "start" ]
