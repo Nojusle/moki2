@@ -64,7 +64,7 @@ const config: Configuration = {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: graphqlUrl // 'http://localhost:4000/'
+        httpEndpoint: graphqlUrl
       }
     }
   },

@@ -15,9 +15,9 @@ spec:
       containers:
         - name: moki2-nuxt
           image: <IMAGE>
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
-          imagePullPolicy: Always
           env:
             - name: GRAPHQL_URL
               value: "https://gql.nojus.me"
