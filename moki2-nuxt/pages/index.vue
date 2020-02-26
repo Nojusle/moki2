@@ -47,13 +47,6 @@ export default Vue.extend({
       this.helloWorld = hello.data
     }
   }
-
-  // apollo: {
-  //   helloWorld: {
-  //     prefetch: false,
-  //     query: HELLO_WORKD_QUERY
-  //   }
-  // }
 })
 </script>
 
