@@ -17,7 +17,7 @@ jobs:
         run: echo $GITHUB_SHA > $GITHUB_WORKSPACE/site/_meta
 
       - name: Build container image
-        run: docker build --build-arg GRAPHQL_URL=https://gql.nojuss.me --build-arg GRAPHQL_LOCAL_URL=https://gql.nojus.me -t nojus/moki2-nuxt:$(echo $GITHUB_SHA | head -c7) ./moki2-nuxt
+        run: docker build --build-arg GRAPHQL_URL=https://gql.nojus.me --build-arg GRAPHQL_LOCAL_URL=https://gql.nojus.me -t nojus/moki2-nuxt:$(echo $GITHUB_SHA | head -c7) ./moki2-nuxt
 
       - name: Docker Login
         env:
@@ -29,7 +29,7 @@ jobs:
         run: docker push nojus/moki2-nuxt
 
       - name: Update deployment file
-        run: sed -i 's|<IMAGE>|nojus/moki2-nuxt:$(echo $GITHUB_SHA | head -c7)|' $GITHUB_WORKSPACE/.kubeconf/apps/moki2-nuxt.yml
+        run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|nojus/moki2-nuxt:'${TAG}'|' $GITHUB_WORKSPACE/.kubeconf/apps/moki2-nuxt.yml
 
       - name: Save DigitalOcean kubeconfig
         uses: digitalocean/action-doctl@master
