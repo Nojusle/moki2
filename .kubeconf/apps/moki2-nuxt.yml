@@ -15,10 +15,10 @@ spec:
       containers:
         - name: moki2-nuxt
           image: <IMAGE>
-          imagePullPolicy: Always
           ports:
             - containerPort: 3000
-
+          imagePullPolicy: Always
+---
 kind: Service
 apiVersion: v1
 metadata:
