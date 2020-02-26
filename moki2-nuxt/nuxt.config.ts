@@ -70,6 +70,7 @@ const config: Configuration = {
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/apollo'
   ],
+
   apollo: {
     clientConfigs: {
       default: {

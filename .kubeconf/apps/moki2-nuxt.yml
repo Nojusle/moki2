@@ -18,12 +18,7 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
-          env:
-            - name: GRAPHQL_URL
-              value: "https://gql.nojus.me"
-            - name: GRAPHQL_LOCAL_URL
-              value: "https://gql.nojus.me"
----
+
 kind: Service
 apiVersion: v1
 metadata:
