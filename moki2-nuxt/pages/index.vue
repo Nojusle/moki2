@@ -14,13 +14,13 @@ export default Vue.extend({
     Clock
   },
 
-  async asyncData({ app }) {
+  async asyncData(context) {
     try {
-      const hello = await app.apolloProvider.defaultClient.query({
+      const hello = await context?.app?.apolloProvider?.defaultClient.query({
         query: HELLO_WORKD_QUERY
       })
 
-      return { helloWorld: hello.data?.helloWorld || 'fetch error' }
+      return { helloWorld: hello?.data?.helloWorld || 'fetch error' }
     } catch {
       return { helloWorld: 'network-error' }
     }
