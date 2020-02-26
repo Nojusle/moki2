@@ -1,13 +1,23 @@
 import { Configuration } from '@nuxt/types'
 
-const graphqlUrl = process.env.GRAPHQL_URL || 'http://localhost:4000'
-const graphqlLocalUrl = process.env.GRAPHQL_LOCAL_URL || 'http://localhost:4000'
+const GRAPHQL_URL = process.env.GRAPHQL_URL || 'http://localhost:4000'
+
+const GRAPHQL_LOCAL_URL =
+  process.env.GRAPHQL_LOCAL_URL || 'http://localhost:4000'
 
 const config: Configuration = {
   mode: 'universal',
+
+  // dotenv: {
+  //   nojus: 'dotenv',
+  //   GRAPHQL_URL,
+  //   GRAPHQL_LOCAL_URL
+  // },
+
   env: {
-    graphqlUrl,
-    graphqlLocalUrl
+    nojus: 'env',
+    GRAPHQL_URL,
+    GRAPHQL_LOCAL_URL
   },
 
   /*
@@ -44,6 +54,8 @@ const config: Configuration = {
    */
 
   buildModules: [
+    '@nuxtjs/dotenv',
+
     '@nuxt/typescript-build',
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
@@ -58,13 +70,13 @@ const config: Configuration = {
   modules: [
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv',
     '@nuxtjs/apollo'
   ],
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: graphqlUrl
+        httpEndpoint: GRAPHQL_URL,
+        ssrMode: true
       }
     }
   },

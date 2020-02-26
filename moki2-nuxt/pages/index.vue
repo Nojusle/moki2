@@ -3,26 +3,57 @@ import Vue from 'vue'
 import gql from 'graphql-tag'
 import Clock from '../components/Clock.vue'
 
+const HELLO_WORKD_QUERY = gql`
+  query homePage {
+    helloWorld
+  }
+`
+
 export default Vue.extend({
   components: {
     Clock
   },
+
+  async asyncData({ app }) {
+    try {
+      const hello = await app.apolloProvider.defaultClient.query({
+        query: HELLO_WORKD_QUERY
+      })
+
+      return { helloWorld: hello.data?.helloWorld || 'fetch error' }
+    } catch {
+      return { helloWorld: 'network-error' }
+    }
+  },
+
   data() {
     return {
       helloWorld: undefined
     }
   },
 
-  apollo: {
-    helloWorld: {
-      prefetch: false,
-      query: gql`
-        query homePage {
-          helloWorld
-        }
-      `
+  computed: {
+    endpoint(): any {
+      return process.env.GRAPHQL_URL || ''
+    }
+  },
+
+  methods: {
+    async refetch() {
+      const hello = await this.$apolloProvider.defaultClient.query({
+        query: HELLO_WORKD_QUERY
+      })
+      console.log(this.$apolloProvider)
+      this.helloWorld = hello.data
     }
   }
+
+  // apollo: {
+  //   helloWorld: {
+  //     prefetch: false,
+  //     query: HELLO_WORKD_QUERY
+  //   }
+  // }
 })
 </script>
 
@@ -38,6 +69,8 @@ export default Vue.extend({
         nojus
       </nuxt-link>
       <div>{{ helloWorld || 'server not working' }}</div>
+      <div>{{ endpoint || 'none' }}</div>
+      <button @click="refetch">click me</button>
     </div>
   </div>
 </template>
