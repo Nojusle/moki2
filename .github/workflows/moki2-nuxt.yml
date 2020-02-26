@@ -29,7 +29,7 @@ jobs:
         run: docker push nojus/moki2-nuxt
 
       - name: Update deployment file
-        run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|nojus/moki2-nuxt:'${TAG}'|' $GITHUB_WORKSPACE/.kubeconf/apps/moki2-nuxt.yml
+        run: sed -i 's|<IMAGE>|nojus/moki2-nuxt:$(echo $GITHUB_SHA | head -c7)|' $GITHUB_WORKSPACE/.kubeconf/apps/moki2-nuxt.yml
 
       - name: Save DigitalOcean kubeconfig
         uses: digitalocean/action-doctl@master
