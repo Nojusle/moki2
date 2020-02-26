@@ -1,12 +1,13 @@
 import { Configuration } from '@nuxt/types'
 
-console.log('process', process.env)
-
 const GRAPHQL_URL = process.env.GRAPHQL_URL || 'http://localhost:4000'
 
 const GRAPHQL_LOCAL_URL = process.env.GRAPHQL_LOCAL_URL || GRAPHQL_URL
 
 const ENV_FROM_DOCKER = process.env.ENV_FROM_DOCKER || 'nope'
+
+console.log('GRAPHQL_URL', GRAPHQL_URL)
+console.log('GRAPHQL_LOCAL_URL', GRAPHQL_LOCAL_URL)
 
 const config: Configuration = {
   mode: 'universal',

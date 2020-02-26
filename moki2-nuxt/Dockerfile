@@ -8,8 +8,8 @@ FROM node:12-alpine
 # ENV GRAPHQL_URL=$GRAPHQL_URL
 # ENV GRAPHQL_LOCAL_URL=$GRAPHQL_LOCAL_URL
 
-ENV GRAPHQL_URL=https://gql.nojus.me
-ENV GRAPHQL_LOCAL_URL=https://gql.nojus.me
+ENV GRAPHQL_URL https://gql.nojus.me
+ENV GRAPHQL_LOCAL_URL https://gql.nojus.me
 
 # create destination directory
 RUN mkdir -p /usr/src/nuxt-app
