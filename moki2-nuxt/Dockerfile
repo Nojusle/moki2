@@ -1,7 +1,9 @@
 FROM node:12-alpine
 
-ENV GRAPHQL_URL https://gql.nojus.me
-ENV GRAPHQL_LOCAL_URL https://gql.nojus.me
+ARG GRAPHQL_URL
+#https://gql.nojus.me
+ARG GRAPHQL_LOCAL_URL
+#https://gql.nojus.me
 
 
 # create destination directory
