@@ -1,6 +1,8 @@
 <script lang="ts">
 import Vue from 'vue'
 
+const fixTime = (sec: number) => (sec < 10 ? `0${sec}` : sec.toString())
+
 export default Vue.extend({
   data() {
     return {
@@ -24,9 +26,9 @@ export default Vue.extend({
   methods: {
     getCurrentTime() {
       const time = new Date()
-      const sec = time.getSeconds()
-      const fix = sec < 10 ? `0${sec}` : sec.toString()
-      return `${time.getHours()}:${time.getMinutes()}:${fix}`
+      return `${fixTime(time.getHours())}:${fixTime(
+        time.getMinutes()
+      )}:${fixTime(time.getSeconds())}`
     }
   }
 })

@@ -91,7 +91,7 @@ export default Vue.extend({
 
     <div class="container">
       <div class="main">
-        <div @click="refetch">v17</div>
+        <div @click="refetch">v18</div>
 
         <Clock />
         <InputMessage @input="send" />
