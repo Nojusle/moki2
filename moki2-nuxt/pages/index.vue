@@ -3,6 +3,7 @@ import Vue from 'vue'
 import gql from 'graphql-tag'
 import Clock from '../components/Clock.vue'
 import InputMessage from '../components/InputMessage.vue'
+import SimpsonsMarge from '../components/SimpsonsMarge.vue'
 
 const GET_MESSAGES = gql`
   query messages {
@@ -18,7 +19,8 @@ const ADD_MESSAGE = gql`
 export default Vue.extend({
   components: {
     Clock,
-    InputMessage
+    InputMessage,
+    SimpsonsMarge
   },
 
   async asyncData(context) {
@@ -82,15 +84,21 @@ export default Vue.extend({
 </script>
 
 <template>
-  <div class="container">
-    <div class="main">
-      <div @click="refetch">v17</div>
+  <div class="main_cont">
+    <div>
+      <SimpsonsMarge />
+    </div>
 
-      <Clock />
-      <InputMessage @input="send" />
+    <div class="container">
+      <div class="main">
+        <div @click="refetch">v17</div>
 
-      <div v-for="i in messageList" :key="i.key">
-        {{ i.index }}. {{ i.msg }}
+        <Clock />
+        <InputMessage @input="send" />
+
+        <div v-for="i in messageList" :key="i.key">
+          {{ i.index }}. {{ i.msg }}
+        </div>
       </div>
     </div>
   </div>
@@ -102,21 +110,24 @@ export default Vue.extend({
   @apply min-h-screen flex justify-center items-center text-center mx-auto;
 }
 */
+.main_cont {
+  background: rgb(232, 243, 255);
+  min-height: 100vh;
+}
+
 .container {
   margin: 0 auto;
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: rgb(232, 243, 255);
 }
 
 .main {
   background: #fff;
   box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.6);
   padding: 10px;
-  margin-top: 100px;
+  margin-top: 5px;
   border-radius: 5px;
 }
 
