@@ -2,7 +2,7 @@
 import Vue from 'vue'
 
 const uiClockArrowPosition = (time: number) => ({
-  transform: `rotate3d(0, 0, 1, ${(time / 60) * 360}deg)`
+  transform: `rotate3d(0, 0, 1, ${time}deg)`
 })
 
 const getCurrentTime = () => {
@@ -29,15 +29,15 @@ export default Vue.extend({
   computed: {
     sec(): any {
       const { sec } = this.time
-      return uiClockArrowPosition(sec)
+      return uiClockArrowPosition((sec / 60) * 360)
     },
     min(): any {
       const { min } = this.time
-      return uiClockArrowPosition(min)
+      return uiClockArrowPosition((min / 60) * 360)
     },
     hour(): any {
       const { hour } = this.time
-      return uiClockArrowPosition(hour)
+      return uiClockArrowPosition((hour / 12) * 360)
     }
   },
 
