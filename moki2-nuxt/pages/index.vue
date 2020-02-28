@@ -91,9 +91,10 @@ export default Vue.extend({
 
     <div class="container">
       <div class="main">
-        <div @click="refetch">v19</div>
-
-        <Clock />
+        <div @click="refetch">v19 2</div>
+        <div :class="$style.clock_cont">
+          <Clock />
+        </div>
         <InputMessage @input="send" />
 
         <div v-for="i in messageList" :key="i.key">
@@ -103,6 +104,12 @@ export default Vue.extend({
     </div>
   </div>
 </template>
+
+<style module>
+.clock_cont {
+  margin: 10px auto;
+}
+</style>
 
 <style>
 /* Sample `apply` at-rules with Tailwind CSS
