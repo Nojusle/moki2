@@ -44,4 +44,4 @@ httpServer.listen({ port: 4000 }, (): void =>
   console.log(`\n🚀      GraphQL is now running on http://localhost:4000/`)
 );
 
-memeoryLeak();
+// memeoryLeak();
