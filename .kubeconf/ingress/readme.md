@@ -10,7 +10,6 @@ cd /tmp
 curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > install-helm.sh
 ```
 
-
 ```
 chmod u+x install-helm.sh
 ```
@@ -70,7 +69,8 @@ kubectl create -f production_issuer.yml
 ```
 kubectl apply -f ingress.yml
 ```
-* wait for letsencrypt to issue sertificate 
+
+- wait for letsencrypt to issue sertificate
 
 ```
 kubectl describe certificate kubernetes

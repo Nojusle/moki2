@@ -63,6 +63,7 @@ export default Vue.extend({
 
 <style module>
 .time {
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.3);
   position: relative;
   border: 3px solid #000;
   border-radius: 50px;
