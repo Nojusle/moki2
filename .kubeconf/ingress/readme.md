@@ -38,6 +38,8 @@ helm init --service-account tiller
 helm install stable/nginx-ingress --name nginx-ingress --set controller.publishService.enabled=true
 ```
 
+<!-- helm uninstall nginx-ingress -->
+
 # add domain to the app (no ssl/tsl)
 
 ```
@@ -67,6 +69,10 @@ kubectl create -f production_issuer.yml
 ```
 
 # update add domain to app (with ssl/tsl)
+
+```
+kubectl delete -f ingress_no_tsl.yml
+```
 
 ```
 kubectl apply -f ingress.yml

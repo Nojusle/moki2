@@ -6,9 +6,9 @@ metadata:
     kubernetes.io/ingress.class: nginx
 spec:
   rules:
-  - host: nojus.me
-    http:
-      paths:
-      - backend:
-          serviceName: moki2-nuxt
-          servicePort: 80
+    - host: nojus.me
+      http:
+        paths:
+          - backend:
+              serviceName: moki2-nuxt
+              servicePort: 80
