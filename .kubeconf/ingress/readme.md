@@ -32,6 +32,8 @@ kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceac
 helm init --service-account tiller
 ```
 
+# install nginx
+
 ```
 helm install stable/nginx-ingress --name nginx-ingress --set controller.publishService.enabled=true
 ```

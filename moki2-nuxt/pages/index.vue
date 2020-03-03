@@ -91,7 +91,7 @@ export default Vue.extend({
 
     <div class="container">
       <div class="main">
-        <div @click="refetch">v20</div>
+        <div @click="refetch">v21</div>
         <div :class="$style.clock_cont">
           <Clock />
         </div>
