@@ -15,29 +15,24 @@ async function connect() {
   const url =
     "mongodb://mongo-mongodb-replicaset-0.mongo-mongodb-replicaset.default.svc.cluster.local,mongo-mongodb-replicaset-1.mongo-mongodb-replicaset.default.svc.cluster.local,mongo-mongodb-replicaset-2.mongo-mongodb-replicaset.default.svc.cluster.local:27017/sharkinfo?replicaSet=rs0";
   // console.log("connecting");
-  return (await Mongo.MongoClient.connect(url))
-    .db("linas")
-    .collection("messages");
+  return (await Mongo.MongoClient.connect(url)).db().collection("messages");
+}
+
+async function getMessages(collection: Mongo.Collection) {
+  return (await (await collection).find().toArray()).map(i => i.msg);
 }
 
 const resolverMap: IResolvers = {
   Query: {
     async messages(_: void, args: void): Promise<string[]> {
-      return (await (await connect()).find().toArray()).map(i =>
-        JSON.stringify(i)
-      );
+      return getMessages(await connect());
     }
   },
   Mutation: {
     async addMessage(_: void, { msg }: any): Promise<string[]> {
-      // try {
       const connection = await connect();
       await connection.insertOne({ msg });
-      // } catch (err) {
-      //   console.log("err", err);
-      //   return [...messages, JSON.stringify(err)];
-      // }
-      return (await connection.find().toArray()).map(i => JSON.stringify(i));
+      return getMessages(connection);
     }
   }
 };
