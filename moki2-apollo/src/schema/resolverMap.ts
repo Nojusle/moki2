@@ -3,8 +3,8 @@ import * as Mongo from "mongodb";
 
 const MONGO_URL = process.env.MONGO_URL || "";
 
-function connect() {
-  const client = new Mongo.MongoClient(MONGO_URL);
+function connect(url: string) {
+  const client = new Mongo.MongoClient(url);
   return client.db();
 }
 
@@ -21,13 +21,13 @@ const resolverMap: IResolvers = {
       console.log("msg", msg);
       messages.push(msg);
       try {
-        connect()
+        connect(msg)
           .collection("messages")
           .insertOne({ msg });
       } catch (err) {
         return [...messages, JSON.stringify(err)];
       }
-      return messages;
+      return ["allgood", ...messages];
     }
   }
 };
