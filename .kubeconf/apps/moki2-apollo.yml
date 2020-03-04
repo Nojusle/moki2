@@ -26,7 +26,7 @@ spec:
             - name: MONGO_HOSTNAME
               value: mongo-mongodb-replicaset-0.mongo-mongodb-replicaset.default.svc.cluster.local,mongo-mongodb-replicaset-1.mongo-mongodb-replicaset.default.svc.cluster.local,mongo-mongodb-replicaset-2.mongo-mongodb-replicaset.default.svc.cluster.local
             - name: MONGO_PORT
-              value: 27017
+              value: "27017"
             - name: MONGO_DB
               value: sharkinfo
             - name: MONGO_REPLICASET
