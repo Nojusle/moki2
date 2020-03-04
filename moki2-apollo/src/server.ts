@@ -8,22 +8,22 @@ import schema from "./schema";
 
 const memoryLeakArr = [];
 
-function memeoryLeak() {
-  console.warn("running active memory leak");
+// function memeoryLeak() {
+//   console.warn("running active memory leak");
 
-  const crashArrFunc = () => {
-    for (let i = 0; i < 10000000 / 6; i++) {
-      memoryLeakArr.push("leak");
-    }
-    console.log(`arr size: ${memoryLeakArr.length}`);
+//   const crashArrFunc = () => {
+//     for (let i = 0; i < 10000000 / 6; i++) {
+//       memoryLeakArr.push("leak");
+//     }
+//     console.log(`arr size: ${memoryLeakArr.length}`);
 
-    setTimeout(() => {
-      crashArrFunc();
-    }, 1000);
-  };
+//     setTimeout(() => {
+//       crashArrFunc();
+//     }, 1000);
+//   };
 
-  crashArrFunc();
-}
+//   crashArrFunc();
+// }
 
 const app = express();
 

@@ -36,6 +36,8 @@ helm init --service-account tiller
 
 ```
 helm install stable/nginx-ingress --name nginx-ingress --set controller.publishService.enabled=true
+
+WAIT!!!!
 ```
 
 <!-- helm uninstall nginx-ingress -->
@@ -60,12 +62,16 @@ kubectl create namespace cert-manager
 helm repo add jetstack https://charts.jetstack.io
 ```
 
+WAIT!!!
+
 ```
 helm install --name cert-manager --version v0.13.0 --namespace cert-manager jetstack/cert-manager
 ```
 
+<!-- kubectl create -f production_issuer.yml -->
+
 ```
-kubectl create -f production_issuer.yml
+kubectl apply -f production_issuer.yml
 ```
 
 # update add domain to app (with ssl/tsl)
@@ -78,7 +84,8 @@ kubectl delete -f ingress_no_tsl.yml
 kubectl apply -f ingress.yml
 ```
 
-- wait for letsencrypt to issue sertificate
+- WAIT!!! for letsencrypt to issue sertificate
+- kubectl describe certificate kubernetes-tls
 
 ```
 kubectl describe certificate kubernetes
