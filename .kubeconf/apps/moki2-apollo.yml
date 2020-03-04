@@ -19,8 +19,8 @@ spec:
             - containerPort: 4000
           imagePullPolicy: Always
           env:
-            - name: MONGO_SERVICE_NAME
-              value: "some mongo url"
+            - name: MONGO_URL
+              value: "mongo url pati geriausia, nojus, nojus, nojus"
             - name: ELASTICSEARCH_SERVICE_NAME
               value: "some elastic url"
 ---
