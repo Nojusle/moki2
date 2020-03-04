@@ -1,23 +1,23 @@
 import { IResolvers } from "graphql-tools";
 import * as Mongo from "mongodb";
 
-const {
-  MONGO_USERNAME,
-  MONGO_PASSWORD,
-  MONGO_HOSTNAME,
-  MONGO_PORT,
-  MONGO_REPLICASET
-} = process.env;
+// const {
+//   MONGO_USERNAME,
+//   MONGO_PASSWORD,
+//   MONGO_HOSTNAME,
+//   MONGO_PORT,
+//   MONGO_REPLICASET
+// } = process.env;
 // MONGO_DB,
 
-const URL = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}?replicaSet=${MONGO_REPLICASET}&authSource=admin`;
+// const URL = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}?replicaSet=${MONGO_REPLICASET}&authSource=admin`;
 
-async function connect() {
-  console.log("connecting");
-  return (await Mongo.MongoClient.connect(URL)).db("linas");
+async function connect(url: string) {
+  // console.log("connecting");
+  return (await Mongo.MongoClient.connect(url)).db("linas");
 }
 
-const messages = ["veikia", URL, `url: ${URL}`];
+const messages = ["veikia"];
 
 const resolverMap: IResolvers = {
   Query: {
@@ -27,15 +27,14 @@ const resolverMap: IResolvers = {
   },
   Mutation: {
     async addMessage(_: void, { msg }: any): Promise<string[]> {
-      console.log("msg", msg);
       messages.push(msg);
-      try {
-        (await connect()).collection("messages").insertOne({ msg });
-      } catch (err) {
-        console.log("err", err);
-        return [...messages, JSON.stringify(err)];
-      }
-      return ["allgood", ...messages];
+      // try {
+      await (await connect(msg)).collection("messages").insertOne({ msg });
+      // } catch (err) {
+      //   console.log("err", err);
+      //   return [...messages, JSON.stringify(err)];
+      // }
+      return [...messages];
     }
   }
 };
