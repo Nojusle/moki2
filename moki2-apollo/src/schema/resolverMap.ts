@@ -1,14 +1,23 @@
 import { IResolvers } from "graphql-tools";
 import * as Mongo from "mongodb";
 
-const MONGO_URL = process.env.MONGO_URL || "";
+const {
+  MONGO_USERNAME,
+  MONGO_PASSWORD,
+  MONGO_HOSTNAME,
+  MONGO_PORT,
+  MONGO_DB,
+  MONGO_REPLICASET
+} = process.env;
 
-function connect(url: string) {
+const url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?replicaSet=${MONGO_REPLICASET}&authSource=admin`;
+
+function connect() {
   const client = new Mongo.MongoClient(url);
   return client.db();
 }
 
-const messages = ["veikia", MONGO_URL];
+const messages = ["veikia", url];
 
 const resolverMap: IResolvers = {
   Query: {
@@ -21,7 +30,7 @@ const resolverMap: IResolvers = {
       console.log("msg", msg);
       messages.push(msg);
       try {
-        connect(msg)
+        connect()
           .collection("messages")
           .insertOne({ msg });
       } catch (err) {
