@@ -9,7 +9,11 @@ async function connect() {
 }
 
 async function getMessages(collection: Mongo.Collection) {
-  return (await (await collection).find().toArray()).map(i => i.msg);
+  return [
+    "new",
+    ...(await (await collection).find().toArray()).map(i => i.msg),
+    "new"
+  ];
 }
 
 const resolverMap: IResolvers = {

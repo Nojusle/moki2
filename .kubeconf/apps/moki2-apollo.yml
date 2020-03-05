@@ -14,24 +14,47 @@ spec:
     spec:
       containers:
         - name: moki2-apollo
-          # image: nojus/moki2-apollo:7f03979
           image: <IMAGE>
           ports:
             - containerPort: 4000
           imagePullPolicy: Always
           env:
             - name: MONGO_USERNAME
-              value: bm9qdXM=
+              valueFrom:
+                configMapKeyRef:
+                  name: mongo-config
+                  key: MONGO_USERNAME
+
             - name: MONGO_PASSWORD
-              value: bm9qdXMxMjM=
-            - name: MONGO_HOSTNAME
-              value: mongo-mongodb-replicaset-0.mongo-mongodb-replicaset.default.svc.cluster.local,mongo-mongodb-replicaset-1.mongo-mongodb-replicaset.default.svc.cluster.local,mongo-mongodb-replicaset-2.mongo-mongodb-replicaset.default.svc.cluster.local
-            - name: MONGO_PORT
-              value: "27017"
+              valueFrom:
+                configMapKeyRef:
+                  name: mongo-config
+                  key: MONGO_PASSWORD
+
             - name: MONGO_DB
-              value: sharkinfo
+              valueFrom:
+                configMapKeyRef:
+                  name: mongo-config
+                  key: MONGO_DB
+
+            - name: MONGO_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: mongo-config
+                  key: MONGO_PORT
+
+            - name: MONGO_HOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: mongo-config
+                  key: MONGO_HOSTNAME
+
             - name: MONGO_REPLICASET
-              value: rs0
+              valueFrom:
+                configMapKeyRef:
+                  name: mongo-config
+                  key: MONGO_REPLICASET
+
 ---
 kind: Service
 apiVersion: v1
