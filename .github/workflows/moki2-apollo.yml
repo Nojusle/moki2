@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - "moki2-apollo/**"
-      - ".kubeconf/app/moki2-apollo.yml"
+      - ".kubeconf/apps/moki2-apollo.yml"
 
 jobs:
   build:
