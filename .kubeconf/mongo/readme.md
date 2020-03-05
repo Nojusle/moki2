@@ -4,10 +4,6 @@ https://github.com/helm/charts/tree/master/stable/mongodb-replicaset
 https://www.digitalocean.com/community/tutorials/how-to-scale-a-node-js-application-with-mongodb-on-kubernetes-using-helm
 
 ```
-helm install --name mongo stable/mongodb-replicaset
-```
-
-```
 openssl rand -base64 756 > key.txt
 ```
 
@@ -31,8 +27,10 @@ echo -n 'nojus123' | base64
 
 == bm9qdXMxMjM=
 
+add it to mongo-secret.yaml
+
 ```
-kubectl create -f secret.yaml
+kubectl create -f mongo-secret.yaml
 ```
 
 ```

@@ -1,6 +1,6 @@
 replicas: 3
 port: 27017
-replicaSetName: db
+replicaSetName: rs0
 podDisruptionBudget: {}
 auth:
   enabled: true
@@ -52,7 +52,7 @@ persistentVolume:
   #storageClass: "-"
   accessModes:
     - ReadWriteOnce
-  size: 1Gi
+  size: 10Gi
   annotations: {}
 serviceAnnotations: {}
 terminationGracePeriodSeconds: 30
