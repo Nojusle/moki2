@@ -24,6 +24,10 @@ const resolverMap: IResolvers = {
   },
   Mutation: {
     async addMessage(_: void, { msg }: any): Promise<string[]> {
+      console.log("process.env", process.env);
+
+      console.log("MONGO_URL", MONGO_URL);
+
       const connection = await connect();
       await connection.insertOne({ msg });
       return getMessages(connection);
