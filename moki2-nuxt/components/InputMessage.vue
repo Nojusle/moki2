@@ -13,7 +13,7 @@ export default Vue.extend({
       const { msg } = this
       if (msg) {
         this.$emit('input', this.msg)
-        this.msg = ''
+        // this.msg = ''
       }
     }
   }
@@ -30,6 +30,7 @@ export default Vue.extend({
 <style module>
 .cont {
   display: flex;
+  flex-direction: column;
   align-items: stretch;
   border: 2px solid #000;
   border-radius: 4px;
@@ -44,7 +45,7 @@ export default Vue.extend({
 
 .btn {
   color: #000;
-  border-left: 2px solid #000;
+  border-top: 2px solid #000;
   padding: 0 10px;
 }
 </style>

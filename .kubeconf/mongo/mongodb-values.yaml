@@ -1,73 +1,126 @@
-replicas: 3
-port: 27017
-replicaSetName: rs0
-podDisruptionBudget: {}
+# replicas: 3
+
+# port: 27017
+
+# replicaSetName: rs0
+
+# podDisruptionBudget: {}
+
+# auth:
+#   enabled: true
+#   existingKeySecret: keyfilesecret
+# existingAdminSecret: mongo-secret
+# imagePullSecrets: []
+
 auth:
-  enabled: true
-  existingKeySecret: keyfilesecret
-  existingAdminSecret: mongo-secret
-imagePullSecrets: []
-installImage:
-  repository: unguiculus/mongodb-install
-  tag: 0.7
-  pullPolicy: Always
-copyConfigImage:
-  repository: busybox
-  tag: 1.29.3
-  pullPolicy: Always
+  enabled: false
+  # existingKeySecret: ""
+  # existingAdminSecret: ""
+  # existingMetricsSecret: ""
+  # adminUser: "bm9qdXM="
+  # adminPassword: "bm9qdXMxMjM="
+  # metricsUser: metrics
+  # metricsPassword: password
+  # key: "1Aa07TzknVyj6/7ymYVs1cqZbOvhiakZgBWKWCG9xOgktRFoDpq3UhIH+l7RQu/q
+  # yhSXXqhujY4KfkiGZIX1IZTnVZoIaUk9RldL7wmWjp20AwNDQKt8b/X2LwbV+8KA
+  # aP/6Iijug2udvs+xIognvLwZX0BXC7ZfBE6nqItSITsbdJKTmxAO1rzMehXmySlg
+  # 8sSGfIKTbZTXPXte/PrMsqQAajXX9Ofr9e7z1voBW7P4NU+O3pUOuZs+BboiEhF7
+  # 88AwsU2t0OSaNHwb2PccFbH/P0sNb/G+vOWa6KjtHABHkyZMOrzV9lzbViKAdMDK
+  # G9BMrX4/QmIXaJ+qAqnuRDxwQjXpZFbV0LLLsmPlY8IETM+Rutm/vwAFc3OGZ2BM
+  # NQD8DLzjHA8MPEQJNG9qxXW+biq1XNEikeImdf9Z/yrdj4jF8gbMF4mTGLeBhGCv
+  # jKxWr4iWVBBi8YoioiDRzPNn9BYPhqEqirCeyvL1O2qRskgyqksh2o8TOnV9hQu1
+  # pgOqGYzFfkXQXowSpa3FxXha5S6qL0y1VNtW2S0AmPQ4D8oTqD0/ZRtPDHQY4PZe
+  # 0C0SFGsuYJgGbnZLo0M9k76a6rBkPkqDOmxBiFBiYR22gnytDih2hYkz0fG2RM4q
+  # mXkHEvys3+MmKVeUpPdX2ykb2qXJxV0/oU+Sl0UgalmE2eWZGp1Hwz6141p3QzHD
+  # Vs9Y4e5LXzL+82NX61FKjJspZxxtQTNKWvuxa8la5yvfC/gnihPu6gW4xe/yePh/
+  # ZRHV/jUzNmdlhw+jHeIjwcDvVUGfbL4P6iz+pYxcuahv7CdEXovKHVseP9Y0nVO6
+  # uxuOcQl50iXhjwiIwfs47TV8uy1+T6KHSm1Is0YfRAIrFGvdJkuUU39mBOB0JM6u
+  # iP51aSfpoun/WSDHBB7ZGdtCT9RUy6XaIkQDXftdev5vGVoa44vL3vV49PrYrcLt
+  # b3EsoCoS89ST9NudSlAcoNYLUxddp3AyyDo1+KmgL3bxq0ua"
+# installImage:
+#   repository: unguiculus/mongodb-install
+#   tag: 0.7
+#   pullPolicy: Always
+
+# copyConfigImage:
+#   repository: busybox
+#   tag: 1.29.3
+#   pullPolicy: Always
+
 image:
-  registry: docker.io
-  repository: bitnami/mongodb
-  tag: 4.2.3-debian-10-r31
+  repository: mongo
+  tag: 4.1.9
   pullPolicy: Always
-extraVars: {}
-metrics:
-  enabled: false
-  image:
-    repository: ssalaues/mongodb-exporter
-    tag: 0.6.1
-    pullPolicy: IfNotPresent
-  port: 9216
-  path: /metrics
-  socketTimeout: 3s
-  syncTimeout: 1m
-  prometheusServiceDiscovery: true
-  resources: {}
-podAnnotations: {}
-securityContext:
-  enabled: true
-  runAsUser: 999
-  fsGroup: 999
-  runAsNonRoot: true
-init:
-  resources: {}
-  timeout: 900
-resources: {}
-nodeSelector: {}
-affinity: {}
-tolerations: []
-extraLabels: {}
-persistentVolume:
-  enabled: true
-  #storageClass: "-"
-  accessModes:
-    - ReadWriteOnce
-  size: 10Gi
-  annotations: {}
-serviceAnnotations: {}
-terminationGracePeriodSeconds: 30
-tls:
-  enabled: false
-configmap: {}
-readinessProbe:
-  initialDelaySeconds: 5
-  timeoutSeconds: 1
-  failureThreshold: 3
-  periodSeconds: 10
-  successThreshold: 1
-livenessProbe:
-  initialDelaySeconds: 30
-  timeoutSeconds: 5
-  failureThreshold: 3
-  periodSeconds: 10
-  successThreshold: 1
+# image:
+#   registry: docker.io
+#   repository: bitnami/mongodb
+#   tag: 4.2.3-debian-10-r31
+#   pullPolicy: Always
+
+# extraVars: {}
+
+# metrics:
+#   enabled: false
+#   image:
+#     repository: ssalaues/mongodb-exporter
+#     tag: 0.6.1
+#     pullPolicy: IfNotPresent
+#   port: 9216
+#   path: /metrics
+#   socketTimeout: 3s
+#   syncTimeout: 1m
+#   prometheusServiceDiscovery: true
+#   resources: {}
+
+# podAnnotations: {}
+
+# securityContext:
+#   enabled: true
+#   runAsUser: 999
+#   fsGroup: 999
+#   runAsNonRoot: true
+
+# init:
+#   resources: {}
+#   timeout: 900
+
+# resources: {}
+
+# nodeSelector: {}
+
+# affinity: {}
+
+# tolerations: []
+
+# extraLabels: {}
+
+# persistentVolume:
+#   enabled: true
+#   #storageClass: "-"
+#   accessModes:
+#     - ReadWriteOnce
+#   size: 10Gi
+#   annotations: {}
+
+# serviceAnnotations: {}
+
+# terminationGracePeriodSeconds: 30
+
+# tls:
+#   enabled: false
+
+# configmap: {}
+
+# readinessProbe:
+#   initialDelaySeconds: 5
+#   timeoutSeconds: 1
+#   failureThreshold: 3
+#   periodSeconds: 10
+#   successThreshold: 1
+
+# livenessProbe:
+#   initialDelaySeconds: 30
+#   timeoutSeconds: 5
+#   failureThreshold: 3
+#   periodSeconds: 10
+#   successThreshold: 1
