@@ -21,14 +21,14 @@ spec:
           env:
             - name: MONGO_USERNAME
               valueFrom:
-                secretKeyRef:
-                  name: mongo-secret
+                configMapKeyRef:
+                  name: mongo-config
                   key: MONGO_USERNAME
 
             - name: MONGO_PASSWORD
               valueFrom:
-                secretKeyRef:
-                  name: mongo-secret
+                configMapKeyRef:
+                  name: mongo-config
                   key: MONGO_PASSWORD
 
             - name: MONGO_DB
@@ -54,6 +54,7 @@ spec:
                 configMapKeyRef:
                   name: mongo-config
                   key: MONGO_REPLICASET
+
 ---
 kind: Service
 apiVersion: v1

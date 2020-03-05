@@ -10,7 +10,7 @@ async function connect() {
 
 async function getMessages(collection: Mongo.Collection) {
   return [
-    "new12",
+    "new123",
     ...(await (await collection).find().toArray()).map(i => i.msg),
     "new12"
   ];
