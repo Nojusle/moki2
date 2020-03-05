@@ -54,7 +54,6 @@ spec:
                 configMapKeyRef:
                   name: mongo-config
                   key: MONGO_REPLICASET
-
 ---
 kind: Service
 apiVersion: v1
