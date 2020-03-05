@@ -1,28 +1,11 @@
 import { IResolvers } from "graphql-tools";
 import * as Mongo from "mongodb";
-
-const {
-  MONGO_USERNAME,
-  MONGO_PASSWORD,
-  MONGO_HOSTNAME,
-  MONGO_PORT,
-  MONGO_REPLICASET,
-  MONGO_DB
-} = process.env;
-
-console.log("MONGO_USERNAME", MONGO_USERNAME);
-console.log("MONGO_PASSWORD", MONGO_PASSWORD);
-console.log("MONGO_HOSTNAME", MONGO_HOSTNAME);
-console.log("MONGO_PORT", MONGO_PORT);
-console.log("MONGO_REPLICASET", MONGO_REPLICASET);
-console.log("MONGO_DB", MONGO_DB);
-
-const URL = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?replicaSet=rs0&authSource=admin`;
-
-console.log("URL", URL);
+import { MONGO_URL } from "../env";
 
 async function connect() {
-  return (await Mongo.MongoClient.connect(URL)).db().collection("messages");
+  return (await Mongo.MongoClient.connect(MONGO_URL))
+    .db()
+    .collection("messages");
 }
 
 async function getMessages(collection: Mongo.Collection) {
