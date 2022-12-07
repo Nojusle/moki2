@@ -32,7 +32,7 @@
     "@types/graphql-depth-limit": "^1.1.2",
     "@types/node": "^13.7.4",
     "graphql-depth-limit": "^1.1.0",
-    "graphql-import": "^1.0.0-beta.2",
+    "graphql-import": "^1.0.2",
     "graphql-import-node": "0.0.4",
     "nodemon": "^2.0.2",
     "ts-node": "^8.6.2",
